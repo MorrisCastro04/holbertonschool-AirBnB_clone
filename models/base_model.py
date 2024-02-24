@@ -30,11 +30,11 @@ class BaseModel():
         self.updated_at = datetime.now()
 
     def to_dict(self):
-            """
-            Converts the object to a dictionary representation.
-            """
-            new_dict = self.__dict__
-            new_dict['__class__'] = self.__class__.__name__
-            new_dict['created_at'] = self.created_at.isoformat()
-            new_dict['updated_at'] = self.updated_at.isoformat()
-            return new_dict
+        """
+        Converts the object to a dictionary representation.
+        """
+        new_dict = self.__dict__
+        new_dict['__class__'] = self.__class__.__name__
+        new_dict['created_at'] = self.created_at.isoformat()
+        new_dict['updated_at'] = self.updated_at.isoformat()
+        return new_dict
