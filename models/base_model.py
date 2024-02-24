@@ -18,21 +18,15 @@ class BaseModel():
         self.created_at = datetime.now()
 
     def __str__(self):
-        """
-        Returns a string representation of BaseModel.
-        """
+        """Returns a string representation of BaseModel."""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """
-        Updates the 'updated_at' attribute with the current datetime.
-        """
+        """Updates the 'updated_at' attribute with the current datetime."""
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """
-        Converts the object to a dictionary representation.
-        """
+        """Converts the object to a dictionary representation."""
         new_dict = self.__dict__
         new_dict['__class__'] = self.__class__.__name__
         new_dict['created_at'] = self.created_at.isoformat()
