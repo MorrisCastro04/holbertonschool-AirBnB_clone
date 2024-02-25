@@ -8,7 +8,6 @@ from datetime import datetime
 
 class TestModel(unittest.TestCase):
     """This class contains unit tests for the BaseModel class."""
-
     def test_Class(self):
         """Test the initialization of the BaseModel class."""
         model = BaseModel()
