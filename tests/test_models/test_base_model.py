@@ -26,8 +26,8 @@ class TestModel(unittest.TestCase):
     def test_str(self):
         """Test the __str__ method of BaseModel."""
         model = BaseModel()
-        expected = f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
-        self.assertEqual(model.__str__(), expected)
+        The_str = f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
+        self.assertEqual(model.__str__(), The_str)
 
     def test_double_check_id_not_save(self):
         """Test that the updated not change if is call more than twice."""
@@ -51,6 +51,7 @@ class TestModel(unittest.TestCase):
         model_dict = model.to_dict()
         self.assertTrue(isinstance(model_dict, dict))
         self.assertTrue(isinstance(model, BaseModel))
+
 
 if __name__ == '__main__':
     unittest.main()
