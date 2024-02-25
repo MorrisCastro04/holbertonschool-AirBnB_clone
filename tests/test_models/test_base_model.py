@@ -28,7 +28,7 @@ class TestModel(unittest.TestCase):
         The_str = f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
         self.assertEqual(model.__str__(), The_str)
 
-    def test_double_check_id_not_save(self):
+    def test_double_check_update_not_save(self):
         """Test that the updated not change if is call more than twice."""
         model = BaseModel()
         time_1 = model.updated_at
