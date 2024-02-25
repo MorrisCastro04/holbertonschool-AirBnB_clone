@@ -11,9 +11,12 @@ class BaseModel():
         created_at (datetime): The datetime when the instance was created.
         updated_at (datetime): The datetime when the instance was last updated.
     """
-    id = str(uuid.uuid4())
-    created_at = datetime.now()
-    updated_at = created_at
+
+    def __init__(self):
+        """initializacion of the model class"""
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = self.created_at
 
     def __str__(self):
         """Returns a string representation of BaseModel."""
@@ -25,7 +28,7 @@ class BaseModel():
 
     def to_dict(self):
         """Converts the object to a dictionary representation."""
-        new_dict = self.__dict__
+        new_dict = dict(self.__dict__)
         new_dict['__class__'] = self.__class__.__name__
         new_dict['created_at'] = self.created_at.isoformat()
         new_dict['updated_at'] = self.updated_at.isoformat()
