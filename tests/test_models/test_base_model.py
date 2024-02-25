@@ -51,3 +51,6 @@ class TestModel(unittest.TestCase):
         model_dict = model.to_dict()
         self.assertTrue(isinstance(model_dict, dict))
         self.assertTrue(isinstance(model, BaseModel))
+
+if __name__ == '__main__':
+    unittest.main()
