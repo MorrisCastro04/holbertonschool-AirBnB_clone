@@ -33,3 +33,16 @@ class BaseModel():
         new_dict['created_at'] = self.created_at.isoformat()
         new_dict['updated_at'] = self.updated_at.isoformat()
         return new_dict
+
+    @classmethod
+    def from_dict(cls, obj_dict):
+        """Recreates an instance from a dictionary representation."""
+        class_name = obj_dict.pop('__class__', None)
+        if class_name is None or class_name != cls.__name__:
+            raise ValueError(
+                f"Invalid or missing '__class__' in dictionary: {obj_dict}")
+        obj_dict['created_at'] = datetime.fromisoformat(obj_dict['created_at'])
+        obj_dict['updated_at'] = datetime.fromisoformat(obj_dict['updated_at'])
+        instance = cls.__new__(cls)
+        instance.__dict__.update(obj_dict)
+        return instance
