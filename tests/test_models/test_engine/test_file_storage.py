@@ -47,3 +47,15 @@ class TestSave(unittest.TestCase):
         test_instance = FileStorage()
         with self.assertRaises(TypeError):
             test_instance.save("hi")
+
+class testReload(unittest.TestCase):
+    def test_reload_correcly(self):
+        storage = FileStorage()
+        obj = BaseModel()
+        storage.new(obj)
+        storage.reload()
+        key = f"BaseModel.{obj.id}"
+        self.assertIn(key, storage.all())
+
+if __name__ == '__main__':
+    unittest.main()
