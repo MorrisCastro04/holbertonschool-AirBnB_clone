@@ -14,12 +14,12 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, arg):
-        """EOF command to exit the program"""
+        """Exit the program"""
         print("")
         return True
 
     def emptyline(self):
-        """Called when an empty line is entered in response to the prompt."""
+        """Overwrite the emptyline method"""
         pass
 
 
