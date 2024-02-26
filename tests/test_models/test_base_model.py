@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """unittest for the class BaseModel"""
 import unittest
+import os
 from models.base_model import BaseModel
 import uuid
 from datetime import datetime
@@ -66,6 +67,14 @@ class TestModel(unittest.TestCase):
         model_dict = model.to_dict()
         self.assertTrue(isinstance(model_dict, dict))
         self.assertTrue(isinstance(model, BaseModel))
+
+    @classmethod
+    def tearDownClass(cls):
+        """Clean up files (if any) created during the tests."""
+        try:
+            os.remove("file.json")  # Adjust filename as necessary
+        except FileNotFoundError:
+            pass
 
 
 if __name__ == '__main__':

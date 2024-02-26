@@ -42,6 +42,15 @@ class TestNew(unittest.TestCase):
 
 
 class TestSave(unittest.TestCase):
+    def setUp(self):
+        """Set up test environment"""
+        self.storage = FileStorage()
+
+    def test_file_path(self):
+        """Test __file_path attribute"""
+        self.assertTrue(hasattr(self.storage, "_FileStorage__file_path"))
+        self.assertIsInstance(self.storage._FileStorage__file_path, str)
+
     """test the method save"""
     def test_no_arguments(self):
         """test without args"""
