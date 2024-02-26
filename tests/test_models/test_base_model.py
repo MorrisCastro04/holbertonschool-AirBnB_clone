@@ -23,6 +23,21 @@ class TestModel(unittest.TestCase):
         model_2 = BaseModel()
         self.assertNotEqual(model_1.id, model_2.id)
 
+    def test_init_with_kwargs(self):
+        """Test initialization with keyword arguments."""
+        kwargs = {
+            "id": "123",
+            "created_at": datetime.now().isoformat(),
+            "updated_at": datetime.now().isoformat()
+        }
+
+        model = BaseModel(**kwargs)
+        for key, value in kwargs.items():
+            if key in ["created_at", "updated_at"]:
+                self.assertEqual(getattr(model, key).isoformat(), value)
+            else:
+                self.assertEqual(getattr(model, key), value)
+
     def test_str(self):
         """Test the __str__ method of BaseModel."""
         model = BaseModel()

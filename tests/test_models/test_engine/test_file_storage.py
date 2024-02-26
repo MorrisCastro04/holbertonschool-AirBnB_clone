@@ -11,7 +11,7 @@ class TestAll(unittest.TestCase):
         """test without args"""
         test_instance = FileStorage()
         self.assertEqual(test_instance.all(), FileStorage._FileStorage__objects)
-    
+
     def test_objects_type(self):
         """test the type of the obj"""
         test_instance = FileStorage()
