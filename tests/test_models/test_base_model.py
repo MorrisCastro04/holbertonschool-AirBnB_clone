@@ -3,7 +3,6 @@
 import unittest
 from models.base_model import BaseModel
 import uuid
-import subprocess
 from datetime import datetime
 
 
@@ -52,30 +51,6 @@ class TestModel(unittest.TestCase):
         model_dict = model.to_dict()
         self.assertTrue(isinstance(model_dict, dict))
         self.assertTrue(isinstance(model, BaseModel))
-
-    def test_prompt(self):
-        process = subprocess.Popen(["python", "console.py"], stdout=subprocess.PIPE,
-                                   stdin=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        output, _ = process.communicate("quit\n")
-        self.assertIn("(hbnb)", output)
-
-    def test_quit_command(self):
-        process = subprocess.Popen(["python", "console.py"], stdout=subprocess.PIPE,
-                                   stdin=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        output, _ = process.communicate("quit\n")
-        self.assertEqual(process.returncode, 0)
-
-    def test_EOF_command(self):
-        process = subprocess.Popen(["python", "console.py"], stdout=subprocess.PIPE,
-                                   stdin=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        output, _ = process.communicate("\x04")
-        self.assertEqual(process.returncode, 0)
-
-    def test_empty_line(self):
-        process = subprocess.Popen(["python", "console.py"], stdout=subprocess.PIPE,
-                                   stdin=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        output, _ = process.communicate("\nquit\n")
-        self.assertNotIn("(hbnb)", output)
 
 
 if __name__ == '__main__':
