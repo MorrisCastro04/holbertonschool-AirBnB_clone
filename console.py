@@ -1,27 +1,130 @@
-#!/usr/bin/python3
-""" console """
-
 import cmd
-
+from models.base_model import BaseModel
+from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter for HBNB project."""
-
+    
     prompt = "(hbnb) "
+    
+    def do_create(self, arg):
+        """Creates a new instance of BaseModel, saves it, and prints the id."""
+        if not arg:
+            print("** class name missing **")
+            return
+        try:
+            new_instance = eval(arg)()
+            new_instance.save()
+            print(new_instance.id)
+        except NameError:
+            print("** class doesn't exist **")
+
+    def do_show(self, arg):
+        """Prints the string representation of an instance."""
+        args = arg.split()
+        if not args:
+            print("** class name missing **")
+            return
+        try:
+            class_name = args[0]
+            if class_name not in globals():
+                print("** class doesn't exist **")
+                return
+            if len(args) < 2:
+                print("** instance id missing **")
+                return
+            instance_id = args[1]
+            key = "{}.{}".format(class_name, instance_id)
+            all_objs = storage.all()
+            if key in all_objs:
+                print(all_objs[key])
+            else:
+                print("** no instance found **")
+        except Exception as e:
+            print(e)
+
+    def do_destroy(self, arg):
+        """Deletes an instance based on the class name and id."""
+        args = arg.split()
+        if not args:
+            print("** class name missing **")
+            return
+        try:
+            class_name = args[0]
+            if class_name not in globals():
+                print("** class doesn't exist **")
+                return
+            if len(args) < 2:
+                print("** instance id missing **")
+                return
+            instance_id = args[1]
+            key = "{}.{}".format(class_name, instance_id)
+            all_objs = storage.all()
+            if key in all_objs:
+                del all_objs[key]
+                storage.save()
+            else:
+                print("** no instance found **")
+        except Exception as e:
+            print(e)
+
+    def do_all(self, arg):
+        """Prints all string representation of all instances."""
+        args = arg.split()
+        all_objs = storage.all()
+        if not args:
+            print([str(obj) for obj in all_objs.values()])
+        else:
+            if args[0] not in globals():
+                print("** class doesn't exist **")
+                return
+            print([str(obj) for key, obj in all_objs.items() if key.startswith(args[0])])
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name and id."""
+        args = arg.split()
+        if not args:
+            print("** class name missing **")
+            return
+        try:
+            class_name = args[0]
+            if class_name not in globals():
+                print("** class doesn't exist **")
+                return
+            if len(args) < 2:
+                print("** instance id missing **")
+                return
+            instance_id = args[1]
+            key = "{}.{}".format(class_name, instance_id)
+            all_objs = storage.all()
+            if key not in all_objs:
+                print("** no instance found **")
+                return
+            if len(args) < 3:
+                print("** attribute name missing **")
+                return
+            if len(args) < 4:
+                print("** value missing **")
+                return
+            attr_name = args[2]
+            attr_value = args[3]
+            setattr(all_objs[key], attr_name, attr_value)
+            storage.save()
+        except Exception as e:
+            print(e)
+
+    def emptyline(self):
+        """Called when an empty line is entered in response to the prompt."""
+        pass
+
+    def do_EOF(self, arg):
+        """EOF command to exit the program"""
+        print("")
+        return True
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
         return True
-
-    def do_EOF(self, arg):
-        """Exit the program"""
-        print("")
-        return True
-
-    def emptyline(self):
-        """Overwrite the emptyline method"""
-        pass
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
