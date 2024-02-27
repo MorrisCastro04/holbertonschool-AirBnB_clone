@@ -2,6 +2,7 @@
 """State class"""
 from models.base_model import BaseModel
 
+
 class State(BaseModel):
     """attributes of the class State"""
     name = ""
