@@ -68,6 +68,15 @@ class TestModel(unittest.TestCase):
         self.assertTrue(isinstance(model_dict, dict))
         self.assertTrue(isinstance(model, BaseModel))
 
+    def test_init_with_args(self):
+        """Test initialization with positional arguments."""
+        args = ["123", datetime.now().isoformat(), datetime.now().isoformat()]
+
+        model = BaseModel(*args)
+        self.assertEqual(model.id, args[0])
+        self.assertEqual(model.created_at.isoformat(), args[1])
+        self.assertEqual(model.updated_at.isoformat(), args[2])
+
     @classmethod
     def tearDownClass(cls):
         """Clean up files (if any) created during the tests."""
