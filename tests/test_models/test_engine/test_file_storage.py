@@ -79,5 +79,13 @@ class testReload(unittest.TestCase):
         key = f"BaseModel.{obj.id}"
         self.assertIn(key, storage.all())
 
+class TestFileStorage(unittest.TestCase):
+    def test_file_path(self):
+        """Test __file_path attribute"""
+        storage = FileStorage()
+        self.assertTrue(hasattr(storage, "_FileStorage__file_path"))
+        self.assertIsInstance(storage._FileStorage__file_path, str)
+        self.assertEqual(storage._FileStorage__file_path, "file.json")
+
 if __name__ == '__main__':
     unittest.main()
