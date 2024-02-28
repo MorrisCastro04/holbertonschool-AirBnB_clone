@@ -23,7 +23,6 @@ class HBNBCommand(cmd.Cmd):
         "State": State
     }
 
-
     def emptyline(self):
         """Called when an empty line is entered in response to the prompt."""
         pass
