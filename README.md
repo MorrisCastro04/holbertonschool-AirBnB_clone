@@ -1,4 +1,6 @@
-AirBnB Clone- The Console
+<img src="https://cloudfront.bernews.com/wp-content/uploads/2018/11/Airbnb-ewrwqlogo-generic-banner.jpg">
+
+## <h1>AirBnB Clone- The Console</h1>
 
 
 The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). A command interpreter is created in this segment to manage objects for the AirBnB(HBnB) website.
@@ -10,7 +12,7 @@ Do operations on objects (count, compute stats, etc...)
 Update attributes of an object
 Destroy an object
 
-Table of Content
+# Table of Content
 
 Environment
 Installation
@@ -21,11 +23,11 @@ Bugs
 Authors
 License
 
-Environment
+# Environment
 
 This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
 
-Installation
+# Installation
 
 Clone this repository: git clone "https://github.com/MorrisCastro04/holbertonschool-AirBnB_clone"
 
@@ -33,7 +35,7 @@ Access AirBnb directory: cd AirBnB_clone
 Run hbnb(interactively): ./console and enter command
 Run hbnb(non-interactively): echo "<command>" | ./console.py
 
-File Descriptions
+# File Descriptions
 
 console.py - the console contains the entry point of the command interpreter. List of commands this console current supports:
 
@@ -53,7 +55,7 @@ def __str__(self) - String representation of the BaseModel class
 def save(self) - Updates the attribute updated_at with the current datetime
 def to_dict(self) - returns a dictionary containing all keys/values of the instance
 
-Classes inherited from Base Model:
+# Classes inherited from Base Model:
 
 amenity.py
 city.py
@@ -82,7 +84,7 @@ def test_bm_module_docstring(self) - Test for the base_model.py module docstring
 def test_bm_class_docstring(self) - Test for the BaseModel class docstring
 def test_bm_func_docstrings(self) - Test for the presence of docstrings in BaseModel methods
 
-TestBaseModel class:
+# TestBaseModel class:
 
 def test_is_base_model(self) - Test that the instatiation of a BaseModel works
 def test_created_at_instantiation(self) - Test created_at is a pub. instance attribute of type datetime
