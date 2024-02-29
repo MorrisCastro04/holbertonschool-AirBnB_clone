@@ -20,7 +20,6 @@ Environment
 This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
 
 Installation
-Clone this repository: git clone "https://github.com/alexaorrico/AirBnB_clone.git"
 Access AirBnb directory: cd AirBnB_clone
 Run hbnb(interactively): ./console and enter command
 Run hbnb(non-interactively): echo "<command>" | ./console.py
@@ -50,6 +49,7 @@ place.py
 review.py
 state.py
 user.py
+
 /models/engine directory contains File Storage class that handles JASON serialization and deserialization :
 file_storage.py - serializes instances to a JSON file & deserializes back to instances
 
