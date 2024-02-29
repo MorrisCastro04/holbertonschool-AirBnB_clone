@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+""" console """
+
 import cmd
 from models.base_model import BaseModel
 from models.amenity import Amenity
@@ -11,7 +14,7 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter for HBNB project."""
-    
+
     prompt = "(hbnb) "
     class_dict = {
         "BaseModel": BaseModel,
@@ -107,7 +110,8 @@ class HBNBCommand(cmd.Cmd):
             if args[0] not in globals():
                 print("** class doesn't exist **")
                 return
-            print([str(obj) for key, obj in all_objs.items() if key.startswith(args[0])])
+            print([str(obj)
+                  for key, obj in all_objs.items() if key.startswith(args[0])])
 
     def do_update(self, arg):
         """
@@ -139,6 +143,7 @@ class HBNBCommand(cmd.Cmd):
         value = args[3].strip("\"")
         setattr(obj, args[2], value)
         obj.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
